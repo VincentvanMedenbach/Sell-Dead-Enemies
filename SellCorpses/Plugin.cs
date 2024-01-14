@@ -21,7 +21,7 @@ namespace SellCorpses
     {
         private const string modGUID = "SellCorpsesMod";
         private const string modName = "Sell corpses mod";
-        private const string modVersion = "1.0.0";
+        private const string modVersion = "1.0.1";
         private const string assetPackageName = "SellCorpses";
         //public static ConfigSettings configSettings = new ConfigSettings();
         private readonly Harmony harmony = new Harmony(modGUID);
@@ -62,10 +62,9 @@ namespace SellCorpses
             Items.RegisterScrap(deadHoardingBug, 0, Levels.LevelTypes.None);
 
             harmony.PatchAll(typeof(SellCorpsesBase));
-            harmony.PatchAll(typeof(RoundManagerPatch));
-            ////harmony.PatchAll(typeof(FlowerManPatch)); TODO ADD LATER
+            //harmony.PatchAll(typeof(RoundManagerPatch));
+
             harmony.PatchAll(typeof(HoardingBugPatch));
-            //harmony.PatchAll(typeof(CoilHeadPatch));
 
 
 
