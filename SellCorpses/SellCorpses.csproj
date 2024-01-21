@@ -75,6 +75,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patches\ThumperPatch.cs" />
+    <Compile Include="Patches\CentipedePatch.cs" />
+    <Compile Include="Patches\BaboonHawkPatch.cs" />
+    <Compile Include="Patches\SandSpiderPatch.cs" />
+    <Compile Include="Patches\EyelessDogPatch.cs" />
+    <Compile Include="Patches\NutcrackerPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Patches\HoardingBugPatch.cs" />
     <Compile Include="Patches\RoundManagerPatch.cs" />

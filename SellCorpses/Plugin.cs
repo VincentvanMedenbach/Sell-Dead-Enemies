@@ -21,7 +21,7 @@ namespace SellCorpses
     {
         private const string modGUID = "SellCorpsesMod";
         private const string modName = "Sell corpses mod";
-        private const string modVersion = "1.0.1";
+        private const string modVersion = "1.2";
         private const string assetPackageName = "SellCorpses";
         //public static ConfigSettings configSettings = new ConfigSettings();
         private readonly Harmony harmony = new Harmony(modGUID);
@@ -29,6 +29,14 @@ namespace SellCorpses
         public static SellCorpsesBase Instance;
         public static ManualLogSource mls;
         public static Item deadHoardingBug;
+        public static Item deadSpider;
+        public static Item deadCentipede;
+        public static Item deadEyelessDog;
+        public static Item deadThumper;
+        public static Item deadNutcracker;
+        public static Item deadBaboonHawk;
+
+
         //[RuntimeInitializeOnLoadMethod]
         //internal static void InitializeRPCS_Landmine()
         //{
@@ -56,15 +64,49 @@ namespace SellCorpses
             AssetBundle bundle = AssetBundle.LoadFromFile(assetDir);
 
              deadHoardingBug = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadHoarderBugItem.asset");
+            deadBaboonHawk = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadBaboonHawkItem.asset");
+            deadCentipede = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadCentipedeItem.asset");
+            deadThumper = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadCrawlerItem.asset");
+            deadEyelessDog = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadEyelessDogItem.asset");
+            deadNutcracker = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadNutcrackerItem.asset");
+            deadSpider = bundle.LoadAsset<Item>("Assets/ViniStuffs/DeadSandSpiderItem.asset");
+
             LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadHoardingBug.spawnPrefab);
-            deadHoardingBug.creditsWorth = 100;
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadBaboonHawk.spawnPrefab);
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadCentipede.spawnPrefab);
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadThumper.spawnPrefab);
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadEyelessDog.spawnPrefab);
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadNutcracker.spawnPrefab);
+            LethalLib.Modules.NetworkPrefabs.RegisterNetworkPrefab(deadSpider.spawnPrefab);
+
+
             Utilities.FixMixerGroups(deadHoardingBug.spawnPrefab);
+            Utilities.FixMixerGroups(deadBaboonHawk.spawnPrefab);
+            Utilities.FixMixerGroups(deadCentipede.spawnPrefab);
+            Utilities.FixMixerGroups(deadThumper.spawnPrefab);
+            Utilities.FixMixerGroups(deadEyelessDog.spawnPrefab);
+            Utilities.FixMixerGroups(deadSpider.spawnPrefab);
+            Utilities.FixMixerGroups(deadNutcracker.spawnPrefab);
+
             Items.RegisterScrap(deadHoardingBug, 0, Levels.LevelTypes.None);
+            Items.RegisterScrap(deadBaboonHawk, 0, Levels.LevelTypes.None);
+            Items.RegisterScrap(deadCentipede, 0, Levels.LevelTypes.None);
+            Items.RegisterScrap(deadThumper, 0, Levels.LevelTypes.None);
+            Items.RegisterScrap(deadEyelessDog, 0, Levels.LevelTypes.None);
+            Items.RegisterScrap(deadNutcracker, 0, Levels.LevelTypes.None);
+            Items.RegisterScrap(deadSpider, 0, Levels.LevelTypes.None);
+
 
             harmony.PatchAll(typeof(SellCorpsesBase));
             //harmony.PatchAll(typeof(RoundManagerPatch));
 
             harmony.PatchAll(typeof(HoardingBugPatch));
+            harmony.PatchAll(typeof(BaboonHawkPatch));
+            harmony.PatchAll(typeof(CentipedePatch));
+            harmony.PatchAll(typeof(EyelessDogPatch));
+            harmony.PatchAll(typeof(NutcrackerPatch));
+            harmony.PatchAll(typeof(SandSpiderPatch));
+            harmony.PatchAll(typeof(ThumperPatch));
 
 
 
